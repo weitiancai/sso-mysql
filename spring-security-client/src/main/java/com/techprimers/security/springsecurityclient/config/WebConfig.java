@@ -15,6 +15,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);

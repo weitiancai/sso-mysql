@@ -27,6 +27,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        //验证客户端是不是这两个  clientId 和 secret
         clients
                 .inMemory()
                 .withClient("ClientId")
