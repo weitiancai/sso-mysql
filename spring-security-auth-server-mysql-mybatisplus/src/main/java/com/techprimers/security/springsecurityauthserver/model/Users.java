@@ -22,20 +22,11 @@ public class Users {
     public Users() {
     }
 
-    public Users(String name, String email, String password, String lastName, int active, Set<Role> roles) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.lastName = lastName;
-        this.active = active;
-        this.roles = roles;
-    }
-
     Users(Users users) {
         this.active = users.active;
         this.email = users.email;
         this.id = users.id;
-        this.lastName = users.lastName;
+        this.realName = users.realName;
         this.name = users.name;
         this.password = users.password;
         this.roles = users.roles;
@@ -51,11 +42,8 @@ public class Users {
     private String email;
     @Column(name="password")
     private String password;
-
-
-
-    @Column(name="last_name")
-    private String lastName;
+    @Column(name="real_name")
+    private String realName;
     @Column(name="active")
     private int active;
 
@@ -64,29 +52,8 @@ public class Users {
     @JoinColumn(name="user_id"),inverseJoinColumns=
     @JoinColumn(name="role_id"))
     private Set<Role> roles;
-    //把 user 表的 user_id 添加到 user_role 表的 role_id 字段
+    //user_role 表中 user_id,role_id 字段 组成 set 集合
 
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", active=" + active +
-                ", roles=" + roles +
-                '}';
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
     public int getId() {
         return id;
     }
@@ -117,6 +84,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public int getActive() {

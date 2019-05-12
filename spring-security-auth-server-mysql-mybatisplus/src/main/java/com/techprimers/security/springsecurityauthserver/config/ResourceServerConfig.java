@@ -22,14 +22,13 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.requestMatchers()
-                .antMatchers("/login","*/hello/*")
-
+                .antMatchers("/login")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
-                // 退出的配置
+                //退出的配置
                 .logout()
                 .and()
                 .requestMatchers()

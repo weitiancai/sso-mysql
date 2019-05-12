@@ -14,10 +14,10 @@ public class CustomerUserDetail extends Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //用户-权限 如 [ROLE_ADMIN]代表用户为管理员
-        System.out.println(getRoles().stream()
+        System.out.println("getRoles==>"+getRoles().stream()
                 .map(role->new SimpleGrantedAuthority("ROLE_"+role.getRole()))
                 .collect(Collectors.toList()));
+        //从这里得到用户是 Admin 还是 User
         return getRoles().stream()
                 .map(role->new SimpleGrantedAuthority("ROLE_"+role.getRole()))
                 .collect(Collectors.toList());
@@ -25,6 +25,8 @@ public class CustomerUserDetail extends Users implements UserDetails {
 
     @Override
     public String getPassword() {
+        getAuthorities();
+        System.out.println("getPassword"+super.getPassword());
         return super.getPassword();
         //这里其实就是和数据库交互了
     }
